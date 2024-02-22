@@ -9,13 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="20dp"
+        android:background="@color/design_default_color_primary_dark">
 
-        <Button
+        <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Left"/>
+            android:padding="20dp"
+            android:background="@drawable/baseline_chevron_left_24"
+            android:contentDescription="date-back" />
 
         <!-- Today's date -->
         <TextView
@@ -26,18 +29,22 @@
             android:gravity="center"/>
 
         <!-- Arrows to navigate forward -->
-        <Button
+        <ImageButton
             android:id="@+id/btnForward"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Right"/>
+            android:padding="20dp"
+            android:background="@drawable/baseline_chevron_right_24"
+            android:contentDescription="date-forward" />
 
         <!-- Date menu button -->
-        <Button
+        <ImageButton
             android:id="@+id/btnDateMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date Menu"/>
+            android:padding="20dp"
+            android:background="@drawable/baseline_calendar_month_24"
+            android:contentDescription="calendar" />
     </LinearLayout>
 
     <!-- Vertical stack of 5 text fields -->

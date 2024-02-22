@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -37,9 +38,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val tvToday: TextView = findViewById(R.id.tvToday)
-        val btnBack: Button = findViewById(R.id.btnBack)
-        val btnForward: Button = findViewById(R.id.btnForward)
-        val btnDateMenu: Button = findViewById(R.id.btnDateMenu)
+        val btnBack: ImageButton = findViewById(R.id.btnBack)
+        val btnForward: ImageButton = findViewById(R.id.btnForward)
+        val btnDateMenu: ImageButton = findViewById(R.id.btnDateMenu)
         verticalStack = findViewById(R.id.verticalStack)
 
         currentDate = Calendar.getInstance()
