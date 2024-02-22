@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Top Menu Bar -->
+    <LinearLayout
+        android:id="@+id/topMenuBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Left"/>
+
+        <!-- Today's date -->
+        <TextView
+            android:id="@+id/tvToday"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+
+        <!-- Arrows to navigate forward -->
+        <Button
+            android:id="@+id/btnForward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Right"/>
+
+        <!-- Date menu button -->
+        <Button
+            android:id="@+id/btnDateMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date Menu"/>
+    </LinearLayout>
+
+    <!-- Vertical stack of 5 text fields -->
+    <LinearLayout
+        android:id="@+id/verticalStack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topMenuBar"
+        android:orientation="vertical"
+        android:padding="16dp">
+    </LinearLayout>
+</RelativeLayout>
