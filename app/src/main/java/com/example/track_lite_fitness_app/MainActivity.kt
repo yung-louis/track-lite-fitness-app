@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.track_lite_fitness_app.R
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
 import java.util.ArrayList
 import java.util.Calendar
 import java.util.Locale
@@ -30,54 +31,60 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var currentDate: Calendar
     private val myDataMap = hashMapOf<String, MutableList<DataItem>>()
-    val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+    val dateFormat = SimpleDateFormat("dd MMM yy", Locale.getDefault())
     private lateinit var verticalStack: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val tvToday: TextView = findViewById(R.id.tvToday)
+        val tvDate: TextView = findViewById(R.id.tvDate)
         val btnBack: ImageButton = findViewById(R.id.btnBack)
         val btnForward: ImageButton = findViewById(R.id.btnForward)
         val btnDateMenu: ImageButton = findViewById(R.id.btnDateMenu)
         verticalStack = findViewById(R.id.verticalStack)
 
         currentDate = Calendar.getInstance()
-        updateDateDisplay(tvToday)
+        updateDateDisplay(tvDate)
 
         btnBack.setOnClickListener { navigateDate(-1) }
         btnForward.setOnClickListener { navigateDate(1) }
         btnDateMenu.setOnClickListener { showDatePickerDialog() }
     }
 
-    private fun updateDateDisplay(tvToday: TextView) {
+    private fun updateDateDisplay(tvDate: TextView) {
         verticalStack.removeAllViews()
-        if(myDataMap[dateFormat.format(currentDate.time)] == null){
-                myDataMap[dateFormat.format(currentDate.time)] =
+        val formatedDate = dateFormat.format(currentDate.time)
+        if(myDataMap[formatedDate] == null){
+                myDataMap[formatedDate] =
                     mutableListOf(DataItem("", ParsedData("")))
         }
-        myDataMap[dateFormat.format(currentDate.time)]?.forEach { _ ->
+        myDataMap[formatedDate]?.forEach { _ ->
             createNewTextField(verticalStack, false)
         }
-        tvToday.text = dateFormat.format(currentDate.time)
+        if(formatedDate == dateFormat.format(Calendar.getInstance().time)) {
+            tvDate.text = "Today"
+        } else {
+            tvDate.text = formatedDate
+        }
     }
 
     private fun navigateDate(offset: Int) {
         currentDate.add(Calendar.DAY_OF_MONTH, offset)
-        updateDateDisplay(findViewById(R.id.tvToday))
+        updateDateDisplay(findViewById(R.id.tvDate))
     }
 
     private fun showDatePickerDialog() {
         val datePicker = DatePickerDialog(
-            this,
+            this, R.style.datePicker,
             DatePickerDialog.OnDateSetListener { _, year, month, day ->
                 currentDate.set(year, month, day)
-                updateDateDisplay(findViewById(R.id.tvToday))
+                updateDateDisplay(findViewById(R.id.tvDate))
             },
             currentDate.get(Calendar.YEAR),
             currentDate.get(Calendar.MONTH),
             currentDate.get(Calendar.DAY_OF_MONTH)
+
         )
         datePicker.show()
     }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/darkGrey">
 
     <!-- Top Menu Bar -->
     <LinearLayout
@@ -9,31 +10,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="20dp"
-        android:background="@color/design_default_color_primary_dark">
+        android:padding="20dp">
+
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="20dp"
+            android:background="@drawable/baseline_miscellaneous_services_24"
+            android:contentDescription="settings" />
 
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:padding="20dp"
+            android:layout_marginStart="20dp"
             android:background="@drawable/baseline_chevron_left_24"
             android:contentDescription="date-back" />
 
         <!-- Today's date -->
         <TextView
-            android:id="@+id/tvToday"
+            android:id="@+id/tvDate"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:textSize="24sp"
             android:gravity="center"/>
 
         <!-- Arrows to navigate forward -->
         <ImageButton
             android:id="@+id/btnForward"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:padding="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/baseline_chevron_right_24"
             android:contentDescription="date-forward" />
 
@@ -41,7 +52,7 @@
         <ImageButton
             android:id="@+id/btnDateMenu"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:padding="20dp"
             android:background="@drawable/baseline_calendar_month_24"
             android:contentDescription="calendar" />
@@ -54,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/topMenuBar"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        >
     </LinearLayout>
 </RelativeLayout>
